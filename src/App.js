@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import TimerContextProvider from "./TimerContextProvider";
+
+import styled from "styled-components";
+
+import TimerForm from "./Components/TimerForm";
+import Timer from "./Components/Timer";
+import TimerOptions from "./Components/TimerOptions";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<TimerContextProvider>
+			<StyledMain>
+				<TimerForm></TimerForm>
+				<Timer></Timer>
+				<TimerOptions></TimerOptions>
+			</StyledMain>
+		</TimerContextProvider>
+	);
 }
 
 export default App;
+
+const StyledMain = styled.main`
+	width: 100vw;
+	min-height: 100vh;
+	display: flex;
+	align-items: center;
+	padding-top: 7rem;
+	flex-direction: column;
+	background-image: linear-gradient(120deg, #a8edea 0%, #fed6e3 60%);
+
+	@media (max-width: 768px) {
+		padding-top: 5rem;
+	}
+`;
